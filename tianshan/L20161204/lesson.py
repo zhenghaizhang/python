@@ -60,31 +60,37 @@
 # 主成分分析
 
 # PCA算法
+
 from sklearn.decomposition import PCA
 import pymysql
 import pandas as pda
+
 conn = pymysql.connect(host='localhost',user='root',passwd='root',db='ts',charset='utf8',port=3306)
-sql = 'select * from lesson'
+sql = 'select stunum,lessonnum from lesson where stunum != 0'
 data9 = pda.read_sql(sql,conn)
-ch = data9['stunum']/data9['lessonnum']
+ch = data9['lessonnum'] / data9['stunum']
 data9[u'学生课程比']  = ch
 # print(data9)
 # ---主成分分析进行中---
 pca1 = PCA()
 pca1.fit(data9)
 # 返回模型中各个特征量
-Characteristic = pca1.components_
-# print(Characteristic)
+characteristic = pca1.components_
+print(characteristic)
 # 各个成分中各自方差百分比，贡献率
 rate = pca1.explained_variance_ratio_
-# print(rate)
+print(rate)
 
-pca2 = PCA(2)
+pca2 = PCA(2) # 参数为期望的维数，例如2维
 pca2.fit(data9)
 reduction = pca2.transform(data9) # 降维
 print(reduction)
+# characteristic = pca2.components_
+# print(characteristic)
+# print(reduction)
+# 降维之后恢复
 recovery = pca2.inverse_transform(reduction)
-print(recovery)
+print(recovery) # 恢复维数之后的结果
 
 # 数值规约
 
