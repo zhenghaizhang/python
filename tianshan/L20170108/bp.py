@@ -10,7 +10,7 @@
 # 8. 验证（测试、分类预测）
 
 # 使用人工神经网络模型预测课程销量
-
+# 数据的读取与整理
 import pandas as pda
 inputfile = 'lesson.csv'
 data = pda.read_csv(inputfile,encoding='gbk',index_col=u'序号')
