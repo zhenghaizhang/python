@@ -46,10 +46,14 @@ class User:
 > python -m pydoc pydocexample
 
 
-
 pydoc生成HTML文档
 
 > python -m pydoc -w pydocexample
 
+pydoc直接打开浏览器
+> python -m pydoc -b
+
+pydoc开辟一个端口
+> python -m pydoc -p 1111
 
 更加详细的说明，请参考官方文档。
