@@ -41,3 +41,10 @@ def query(uid: int):
     msg = f'你查询的uid为: {uid}'
     return {'success': True, 'msg': msg}
 ```
+
+但使用 FastApi 的时候，我们只需要类型标注就能解决所有问题。首先我们导入from pydantic import BaseModel，然后继承BaseModel实现我们允许 POST 方法提交上来的数据字段和格式
+除了开发接口变得非常简单外，FastApi 还会自动帮我们生成接口文档。大家访问http://127.0.0.1:8000/docs，可以看到接口文档已经自动生成好了
+
+接口不仅能看，而且直接就能在接口页面修改样例数据，发送请求，现场测试
+
+详情可参考官方文档：https://fastapi.tiangolo.com/
